@@ -1,4 +1,4 @@
-# PATIENT MODULE
+# PATIENT FILE
 # This file contains the PatientDetails class.
 # It stores patient information to select the issue/test for which an appointment is needed.
 # Defining the PatientDetails Class 
