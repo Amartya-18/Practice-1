@@ -5,23 +5,10 @@
 class PatientDetails:
    patient_id = 1001         # Class Variable for Auto-Generating Patient ID
 
-# Defining the list of treatment requirements 
-treatment_required = ["Acidity","Acid Reflux","Gastric Issues","Bloating",
-                           "Blood Test","KFT","LFT","CBC","Lipid Profile"]  #we can try defining this in Doctor class
-
-# Defining the Appointment Time Range
-# Patients can book appointments between 10 AM and 4 PM.
-appointment_start_time = "10:00 hrs"
-appointment_end_time = "16:00 hrs"
-break_start_time = "13:00 hrs"
-break_end_time = "14:00 hrs"
-#we can eliminate this part and add about the available time slots according to user inputs in derived classes
-
-# Constructor for Initializing Patient Details
+def __init__(self, patient_name, age, gender,treatment_required):    # Constructor for Initializing Patient Details
 # This function has to be called automatically called whenever a new object is created in PatientDetails Case.
 # patient_name, age, gender and treatment_required are provided while creating the Patient object.
 
-def __init__(self, patient_name, age, gender,treatment_required):
  PatientDetails.patient_id += 1 
  self.patient_name = patient_name
  self.age = age
@@ -36,14 +23,6 @@ def display_Patient_details(self):
   print("Age:",self.age)
   print("Gender:",self.gender)
   print("Treatment Required:",self.treatment_required)
-
-# Function to Display Appointment Timings
-# This informs the patient about the appointment slots ( The Break time has also been mentioned above)
-
- def show_Appointment_timings(self):
-    print(Appointment Timings: "10:00 hrs to 16:00 hrs")
-    print(Break Timings : "13:00 hrs to 14:00 hrs")
-
 
 #  Setter Function for Patient Name
  def set_Patient_name(self,patient_name): 
