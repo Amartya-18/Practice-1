@@ -2,10 +2,9 @@
 # This file contains the DoctorDetails base class and the derived classes for different doctor specialities.
 # The busy appointment slots are predfined for derived doctor class.
 # Importing datetime 
-from datetime import datetime
 # This import function is needed for defining the doctor's predefined busy date and time slots. 
-# Defining doctordetails base class - The data members mentioned in the base class 
-# will also be inherited in the derived class of doctor's sepciality. 
+from datetime import datetime
+# Defining doctordetails base class - The data members mentioned in the base class will also be inherited in the derived class of doctor's sepciality. 
 
 class DoctorDetails:
   doctor_id = 1001     # Class Variable for Auto-Generating Doctor ID 
@@ -24,19 +23,17 @@ class DoctorDetails:
      print("Treatment Speciality:",self.treatment_speciality) 
 
  def check_Slot_availability(self,selected_slot): 
-
-      if selected_slot == self.busy_slots:
-             return False
-
-       else:
-             return True
+    if opted_slot in self.busy_slots:
+      return False
+    else:
+      return True
 
 # Function to Book Appointment
   def book_Appointment(self,opted_slot):
-  if selected_slot == self.busy_slots:
+  if opted_slot in self.busy_slots:
       print("This slot is already busy.")
   else:
-        self.busy_slots != selected_slot
+        self.busy_slots.append
        print("Appointment booked successfully.")
 
 # DERIVED CLASS - GASTROENTEROLOGIST
