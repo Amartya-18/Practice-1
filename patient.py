@@ -9,6 +9,13 @@ class PatientDetails:
 treatment_required = ["Acidity","Acid Reflux","Gastric Issues","Bloating",
                            "Blood Test","KFT","LFT","CBC","Lipid Profile"]
 
+# Defining the Appointment Time Range
+# Patients can book appointments between 10 AM and 4 PM.
+appointment_start_time = "10:00 hrs"
+appointment_end_time = "16:00 hrs"
+break_start_time = "13:00 hrs"
+break_end_time = "14:00 hrs"
+
 # Constructor for Initializing Patient Details
 # This function has to be called automatically called whenever a new object is created in PatientDetails Case.
 # patient_name, age, gender and treatment_required are provided while creating the Patient object.
@@ -28,6 +35,14 @@ def display_Patient_details(self):
   print("Age:",self.age)
   print("Gender:",self.gender)
   print("Treatment Required:",self.treatment_required)
+
+# Function to Display Appointment Timings
+# This informs the patient about the appointment slots ( The Break time has also been mentioned above)
+
+ def show_Appointment_timings(self):
+    print(Appointment Timings: "10:00 hrs to 16:00 hrs")
+    print(Break Timings : "13:00 hrs to 14:00 hrs")
+
 
 #  Setter Function for Patient Name
  def set_Patient_name(self,patient_name): 
@@ -49,5 +64,3 @@ def display_Patient_details(self):
            except (TypeError, ValueError) as e:
             print("Error:",e)
              
-
-   
