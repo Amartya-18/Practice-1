@@ -7,7 +7,7 @@ class PatientDetails:
 
 # Defining the list of treatment requirements 
 treatment_required = ["Acidity","Acid Reflux","Gastric Issues","Bloating",
-                           "Blood Test","KFT","LFT","CBC","Lipid Profile"]
+                           "Blood Test","KFT","LFT","CBC","Lipid Profile"]  #we can try defining this in Doctor class
 
 # Defining the Appointment Time Range
 # Patients can book appointments between 10 AM and 4 PM.
@@ -15,6 +15,7 @@ appointment_start_time = "10:00 hrs"
 appointment_end_time = "16:00 hrs"
 break_start_time = "13:00 hrs"
 break_end_time = "14:00 hrs"
+#we can eliminate this part and add about the available time slots according to user inputs in derived classes
 
 # Constructor for Initializing Patient Details
 # This function has to be called automatically called whenever a new object is created in PatientDetails Case.
