@@ -19,7 +19,7 @@ class DoctorDetails:
      print("Doctor Name:",self.doctor_name)
      print("Treatment Speciality:",self.treatment_speciality) 
 
- def check_Slot_availability(self,selected_slot): 
+ def check_Slot_availability(self,selected_slot):  #doing the same work as book_Appointment(need to check once)
     if selcted_slot in self.busy_slots:
       return False
     else:
