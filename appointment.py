@@ -48,11 +48,11 @@ except ValueError:
 
 # Functions to find available time slots 
 
-def find_Available_slots(doctor,appointment_date):
+def find_Available_slots(doctor,appointment_date):  #need to call slots_availability method from doctor class
       available_slots = [] 
 
-# Checking Whether the Doctor is Busy 
+# Checking Whether the Doctor is Busy ----> no need for this as we are already checking available slots in find_Available_slots method
 
-# FUNCTION TO DISPLAY AND SELECT APPOINTMENT SLOT
+# FUNCTION TO DISPLAY AND SELECT APPOINTMENT SLOT  ------> no need to display as we are going to do it in slots_availability method in doctor class
 
   
