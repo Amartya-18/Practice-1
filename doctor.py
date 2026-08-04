@@ -1,19 +1,16 @@
 # DOCTOR FILE
-# This file contains the DoctorDetails base class and the derived classes for different doctor specialities.
 # The busy appointment slots are predfined for derived doctor class.
-# Importing datetime 
-# This import function is needed for defining the doctor's predefined busy date and time slots. 
+# Importing datetime: This import function is needed for defining the doctor's predefined busy date and time slots. 
 from datetime import datetime
 # Defining doctordetails base class - The data members mentioned in the base class will also be inherited in the derived class of doctor's sepciality. 
 
 class DoctorDetails:
   doctor_id = 1001     # Class Variable for Auto-Generating Doctor ID 
-    def __init__(self,doctor_name,treatment_speciality,busy_slots):
+    def __init__(self,doctor_name,treatment_speciality):
       self.doctor_id = DoctorDetails.doctor_id
       DoctorDetails.doctor_id += 1
       self.doctor_name = doctor_name
       self.treatment_speciality = (treatment_speciality)
-      self.busy_slots = busy_slots
       
 # Function to display Doctor's Details 
   def display_Doctor_details(self):
@@ -23,29 +20,68 @@ class DoctorDetails:
      print("Treatment Speciality:",self.treatment_speciality) 
 
  def check_Slot_availability(self,selected_slot): 
-    if opted_slot in self.busy_slots:
+    if selcted_slot in self.busy_slots:
       return False
     else:
       return True
 
-# Function to Book Appointment
-  def book_Appointment(self,opted_slot):
-  if opted_slot in self.busy_slots:
-      print("This slot is already busy.")
-  else:
-        self.busy_slots.append
-       print("Appointment booked successfully.")
+# Function to Display Appointment Timings
+# This function displays the working appointment  timings and break timings to the patient.
+
+def show_Appointment_timings(self):
+   print("Appointment Timings: 10:00 hrs - 16:00 hrs")
+   print("Break Timings: 13:00 hrs - 14:00 hrs")
+
+ # Function to Book Appointment
+  def book_Appointment(self,selcted_slot): 
+       if selected_slots in self.busy_slots: 
+           print("This slot is already busy")
+else:
+       self.busy_slots.append (selected_slot)
+         print("Appointment Booked Successfully")
+
 
 # DERIVED CLASS - GASTROENTEROLOGIST
 # This class represents the Gastroenterology speciality.
 
 class Gastroenterologist(DoctorDetails):
   provided_treatments = ["Acidity","Acid Reflux","Gastric Issues","Bloating"]
-def __init__(self):
+# Treatments Handled by Gastroenterologist and the above issues are mapped to gastroenterology speciality. 
 
-  # DERIVED CLASS  - PATHOLOGIST
+def __init__(self):             # Constructor for Gastroenterologist
+   super().__init__(doctor_name,"Gastroenterology")      # Calling Constructor of Parent DoctorDetails Class
+ # doctor_name comes from object creation.
+ # Gastroenterology is predefined because this derived class is represented as a speciality.
 
+# Defining Appointment Timings for the derived Gatroenterologist class.  
+  self.appointment_start_time = 10  
+  self.appointment_end_time = 16 
+  self.break_start_time = 13 
+  self.break_end_time = 14 
+
+# Defining Predefined Busy Slots - These are the date & time slots during which gastroenterologist is already occupied. 
+#  datetime format : datetime(year, month, day, hour, minute)
+
+ self.busy_slots = [datetime(2026, 8, 10, 11, 0),
+                    datetime(2026, 8, 10, 14, 30), 
+                    datetime(2026, 8, 11, 15, 0)]
+
+# DERIVED CLASS  - PATHOLOGIST
 class Pathologist(DoctorDetails):
    provided_treatments = ["Blood Test","KFT","LFT","CBC","Thyroid Test"]
+# Treatments Handled by Pathologists and the mentioned issues are mapped to Pathology speciality. 
+def __init__(self,doctor_name):
 
+  # Calling the Constructor of DoctorDetails
+ super().__init__(doctor_name,"Pathology")
+# Defining Appointment Timings for the derived Gatroenterologist class.  
+  self.appointment_start_time = 10  
+  self.appointment_end_time = 16 
+  self.break_start_time = 13 
+  self.break_end_time = 14 
+
+ # Defining Predefined Busy Slots for Pathologist
+self.busy_slots = [ datetime(2026, 8, 10, 10, 0),
+                    datetime(2026, 8, 10, 15, 0),
+                    datetime(2026, 8, 11, 12, 0)]
 
