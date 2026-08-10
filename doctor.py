@@ -6,6 +6,7 @@ from datetime import datetime
 
 class DoctorDetails:
   doctor_id = 1001     # Class Variable for Auto-Generating Doctor ID 
+  # Constructor for Initialising doctor's details 
     def __init__(self,doctor_name,treatment_speciality):
       self.doctor_id = DoctorDetails.doctor_id
       DoctorDetails.doctor_id += 1
@@ -14,23 +15,27 @@ class DoctorDetails:
       
 # Function to display Doctor's Details 
   def display_Doctor_details(self):
-     print("Doctor Details:" DoctorDetails)
+     print("\nDoctor Details:" DoctorDetails)
      print("Doctor ID:",self.doctor_id)
      print("Doctor Name:",self.doctor_name)
      print("Treatment Speciality:",self.treatment_speciality) 
+    
+#Function to check Slot Availibility 
+ #If the opted slot is already present in busy_slots,the function returns False, otherwise it returns true. 
 
- def check_Slot_availability(self,selected_slot):  #doing the same work as book_Appointment(need to check once)
+def check_Slot_availability(self,selected_slot):  #doing the same work as book_Appointment(need to check once)
     if selcted_slot in self.busy_slots:
       return False
     else:
       return True
 
-# Function to Display Appointment Timings
-# This function displays the working appointment  timings and break timings to the patient.
+# Function to show Available Slots 
+# This function:
+# 1. Generates slots within doctor's working hours.  2. Excludes break time.
+# 3. Excludes predefined busy slots.                 4. Displays the remaining slots.
 
-def show_Appointment_timings(self):
-   print("Appointment Timings: 10:00 hrs - 16:00 hrs")
-   print("Break Timings: 13:00 hrs - 14:00 hrs")
+def show_Available_slots(self,appointment_date):
+ available_slots = []
 
  # Function to Book Appointment
   def book_Appointment(self,selcted_slot): 
