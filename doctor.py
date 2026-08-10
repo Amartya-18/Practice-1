@@ -29,21 +29,18 @@ def check_Slot_availability(self,selected_slot):  #doing the same work as book_A
     else:
       return True
 
-# Function to show Available Slots 
-# This function:
-# 1. Generates slots within doctor's working hours.  2. Excludes break time.
-# 3. Excludes predefined busy slots.                 4. Displays the remaining slots.
+# Function to show display available doctor timings. 
+# This displays predfeined working hours and break timings of the doctor. 
 
-def show_Available_slots(self,appointment_date):
- available_slots = []
+def show_Appointment_timings(self):
+  print("Appointment Timings : 10:00 hrs - 16:00 hrs")
+  print("Break Timings : 13:00 hrs - 14:00 hrs") 
 
- # Function to Book Appointment
-  def book_Appointment(self,selcted_slot): 
-       if selected_slots in self.busy_slots: 
-           print("This slot is already busy")
-else:
-       self.busy_slots.append (selected_slot)
-         print("Appointment Booked Successfully")
+# Function to show available appointment slots 
+# 1. This shows doctor's working hours  2. This also takes into account doctor's break time & predefined busy slots.
+
+def show_available_slots(self):
+avaialable_slots =[] # Creating an empty list where appointments will be stored
 
 
 # DERIVED CLASS - GASTROENTEROLOGIST
