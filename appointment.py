@@ -7,8 +7,8 @@ gastro_doctor = Gastroenterologist("Dr. Sharma")
 pathology_doctor = Pathologist("Dr. Mehta")
 
 # Getting Treatment options from the Doctor Classes
-treatment_options_gastroenterology = (Gastroenterologist.handled_treatments)
-treatment_options_pathology = (Pathologist.handled_treatments)
+treatment_options_gastroenterology = (Gastroenterologist.provided_treatments)
+treatment_options_pathology = (Pathologist.provided_treatments)
 
 # Combining Treatment Options of Both Specialities
 treatment_options = (treatment_options_gastroenterology+treatment_options_pathology) 
