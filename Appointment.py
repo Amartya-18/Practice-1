@@ -1,78 +1,100 @@
-# Appointment File
-# This file connects the Patient and Doctor classes.
-from patient import PatientDetails                      # Importing Patient Details from patient.py
-from doctor import Gastroenterologist, Pathologist      # Importing the derived doctor classes from doctor.py
-from datetime import datetime                           # Importing date and time for Appointment date
+#APPOINTMENT FILE 
+from doctor import Gastroenterologist, Pathologist
+from datetime import datetime 
+from patient import PatientDetails 
 
-# Creating Objects of derived Doctor Classes
+# Creating Doctor Objects 
 gastro_doctor = Gastroenterologist("Dr. Sharma")
 pathology_doctor = Pathologist("Dr. Mehta")
 
-# Getting Treatment options from the Doctor Classes
-treatment_options_gastroenterology = (Gastroenterologist.provided_treatments)
-treatment_options_pathology = (Pathologist.provided_treatments)
+# GETTING TREATMENT OPTIONS FROM THE DOCTOR'S CLASSES
+# The treatment list is already defined in doctor.py.
+treatment_options_gastroenterology = Gastroenterologist.provided_treatments
+treatment_options_pathology = Pathologist.provided_treatments
+# Combining Treatment Options 
+treatment_options = treatment_options_gastroenterology + treatment_options_pathology
 
-# Combining Treatment Options of Both Specialities
-treatment_options = (treatment_options_gastroenterology+treatment_options_pathology)
-
-# Function to display and select treatment required 
+# FUNCTION TO DISPLAY AND SELECT TREATMENT
+# The patient selects a treatment using its number.
 def choose_Treatment():
-    print("\nAvailable Treatment Requirements:")
-  
-for treatment in treatment_options:
-      print(treatment)
-  treatment_required = input("\nEnter Treatment Required: ")
+    print("\nAvailable Treatment Options:")
+    print("\nGastroenterology:")
+    print("1. Acidity")
+    print("2. Acid Reflux")
+    print("3. Gastric Issues")
+    print("4. Bloating")
 
- # Checking Whether Entered Treatment Exists in the List
-    if treatment_required in treatment_options:
-         return treatment_required
-   else:
-          print("Please enter a valid treatment.")
-          return None
+    print("\nPathology / Diagnostic Tests:")
+    print("5. Blood Test")
+    print("6. KFT")
+    print("7. LFT")
+    print("8. CBC")
+    print("9. Thyroid Test")
 
-# Function to map a treatment to doctor 
+    try:
+        selected_treatment_number = int(input("\nEnter Treatment Option Number: "))
+        if selected_treatment_number == 1:
+            return "Acidity"
+        elif selected_treatment_number == 2:
+            return "Acid Reflux"
+        elif selected_treatment_number == 3:
+            return "Gastric Issues"
+        elif selected_treatment_number == 4:
+            return "Bloating"
+        elif selected_treatment_number == 5:
+            return "Blood Test"
+        elif selected_treatment_number == 6:
+            return "KFT"
+        elif selected_treatment_number == 7:
+            return "LFT"
+        elif selected_treatment_number == 8:
+            return "CBC"
+        elif selected_treatment_number == 9:
+            return "Thyroid Test"
+        else:
+            print("Please enter a valid treatment option number.")
+            return None
+    except ValueError:
+        print("Invalid Selection")
+        return None
+
+# Function to Map Treatment to Doctor
 def find_Doctor(treatment_required):
-   if treatment_required in treatment_options_gastroenterology:           # Checking Gastroenterology Treatments
-         return gastro_doctor
-      elif treatment_required in treatment_options_pathology:             # Checking Pathology Treatments
-           return pathology_doctor
- else:
-       return None                                                        # In case no matching doctor is found. 
+    if treatment_required in treatment_options_gastroenterology:
+        return gastro_doctor
+    elif treatment_required in treatment_options_pathology:
+        return pathology_doctor
+    else:
+        return None
 
-# Function to get appointment date 
+# FUNCTION TO GET APPOINTMENT DATE 
 def get_Appointment_date():
- try:
-       date_input = input("\nEnter Appointment Date (DD-MM-YYYY):")
-  # Converting String into datetime Object
-       appointment_date = datetime.strptime
-      (date_input,"%d-%m-%Y")
-       return appointment_date
-except ValueError:
-      print("Please enter a valid date in DD-MM-YYYY format.")
-      return None
-# Function to display and select Appointment Slot -The Doctor class calculates the available slots.
-# This function only handles the patient's selection.
+    while True:
+        try:
+            date_input = input("\nEnter Appointment Date (DD-MM-YYYY): ")
+            return datetime.strptime(date_input, "%d-%m-%Y")
+        except ValueError:
+            print("Please enter a valid date in DD-MM-YYYY format.")
 
-def choose_Appointment_slot(doctor,appointment_date):
-    
-# Asking the Selected Doctor for Available Slots
-available_slots = doctor.show_Available_slots(appointment_date)
+# Function to select an appointment slot
+# This function expects a doctor object and a valid appointment date.
+def select_Appointment_slot(doctor, appointment_date):
+    if appointment_date is None:
+        print("Please enter a valid date before selecting a slot.")
+        return None
 
-# Checking Whether Any Slots are Available
-  if len(available_slots) == 0:
-      return None
-# Taking Appointment Slot Number from Patient
-try:
-      selected_slot_number = int(input("\nEnter Appointment Slot Number: "))
-# Checking Whether the Entered Number is Valid
-    if ( 
-       selected_slot_number >= 1
-        and selected_slot_number <= len(available_slots)
-        ):
-# Converting Patient's Number into List Index 
- selcted_slot = available_slots[selected_slot_number - 1]
-  return selected_slot
- 
- except ValueError:
-          print("Please enter a valid number.")
-          return None
+    available_slots = doctor.show_Available_slots(appointment_date)
+    if not available_slots:
+        print("No appointment slots are available.")
+        return None
+
+    try:
+        selected_slot_number = int(input("\nEnter Appointment Slot Number: "))
+        if 1 <= selected_slot_number <= len(available_slots):
+            return available_slots[selected_slot_number - 1]
+        else:
+            print("Please enter a valid appointment slot number.")
+            return None
+    except ValueError:
+        print("Invalid Selection")
+        return None
