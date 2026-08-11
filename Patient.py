@@ -6,16 +6,17 @@ class PatientDetails:
    patient_id = 1001         # Class Variable for Auto-Generating Patient ID
 
 def __init__(self, patient_name, age, gender,treatment_required):    # Constructor for Initializing Patient Details
-# This function (parameterized constructor) has to be called automatically called whenever a new object is created in PatientDetails Case.
+# This function (parameterized constructor) has to be called automatically called 
+# whenever a new object is created in PatientDetails Class.
+
 # Patient_name, age, gender and treatment_required are provided while creating the Patient object.
-  
  PatientDetails.patient_id += 1 
  self.patient_name = patient_name
  self.age = age
  self.gender = gender
  self.treatment_required = treatment_required
 
-# Function to Display Patient Details
+# Functions to Display Patient Details
 def display_Patient_details(self):
   print("\n Patient Details:" self.patient_details)
   print("Patient ID:",self.patient_id)
@@ -55,5 +56,3 @@ def set_Age(self,age):
                self.age = age
     except (TypeError, ValueError) as e:
            print("Error:",e)
-
-
