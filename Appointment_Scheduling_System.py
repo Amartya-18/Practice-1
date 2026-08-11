@@ -1,3 +1,4 @@
+import pickle                #  pickle is used for serialization and deserialization.
 from patient import PatientDetails
 from appointment import 
 (
@@ -69,6 +70,36 @@ print("Appointment Time:",selected_slot.strftime
       ("%H:%M hrs")
       )
 
+# File Handling - Serialization
+# The appointment_details dictionary is converted into a storable form and written into appointments.dat.
+with open("appointments.dat","ab") as file:          # "a" means append, so previous appointments are not deleted & b means binary.
+  pickle.dump(appointment_details,file)
+  print("\nAppointment details saved successfully.")
+    
+# Deserialization 
+# The appointments.dat file is opened in binary read mode.
+# Each previously stored appointment record is read using pickle.load() and displayed.
+print("Saved Appointment Records")
 
+with open("appointments.dat","rb") as file:     # "rb" means read binary
+    while True:
+        try:
+            saved_appointment = pickle.load(file)
+    
+ # Displaying the Deserialized Appointment
+
+ print("\nPatient ID:",saved_appointment["Patient ID"])
+ print("Patient Name:",saved_appointment["Patient Name"])
+ print("Treatment Required:",saved_appointment["Treatment Required"])
+ 
+ print("Doctor ID:",saved_appointment["Doctor ID"])
+ print("Doctor Name:",saved_appointment["Doctor Name"])
+ print("Treatment Speciality:",saved_appointment["Treatment Speciality"])
+
+ print("Appointment Date:",saved_appointment[ "Appointment Date"])
+ print("Appointment Time:",saved_appointment["Appointment Time"])
+
+except EOFError:                       # End of File Error 
+             break
 
 
