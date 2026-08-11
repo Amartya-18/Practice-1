@@ -79,3 +79,41 @@ print("Treatment Speciality:",doctor1.treatment_speciality)
 print("Appointment Date:",selected_slot.strftime("%d-%m-%Y"))
 print("Appointment Time:",selected_slot.strftime("%H:%M hrs"))
 
+
+
+# FILE HANDLING - SERIALIZATION & DESERIALIZATION 
+# Existing appointment records are read from appointments.dat.
+# The new appointment is added to the list.
+# The updated list is then saved back into the file.
+appointments = [] 
+# Reading Existing Appointment Records 
+# If appointments.dat already contains appointments, they are loaded into the appointments list.
+try:
+   with open("appointments.dat","rb") as file:
+    appointments = pickle.load(file)
+except FileNotFoundError:
+  appointments = []
+# SERIALIZATION
+# The complete appointments list is converted into binary format and stored in appointments.dat.
+
+with open("appointments.dat","wb") as file:
+
+    pickle.dump(appointments,file)
+    print("\nAppointment details saved successfully.")
+
+# DESERIALIZATION 
+# Reading the appointment records from appointments.dat and displaying it.
+
+print("SAVED APPOINTMENT RECORDS")
+with open("appointments.dat","rb") as file:
+  appointments = pickle.load(file) 
+  for appointment in appointments:
+
+    print("\nPatient ID:",appointment["Patient ID"])
+    print("Patient Name:",appointment["Patient Name"])
+    print("Treatment Required:",appointment["Treatment Required"])
+    print("Doctor Name:",appointment["Doctor Name"])
+    print("Treatment Speciality:",appointment["Treatment Speciality"])
+    print("Appointment Date:",appointment["Appointment Date"])
+    print("Appointment Time:",appointment["Appointment Time"])
+
