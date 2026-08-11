@@ -29,18 +29,54 @@ def check_Slot_availability(self,selected_slot):  #doing the same work as book_A
     else:
       return True
 
-# Function to show display available doctor timings. 
+# Function to display doctor appointment timings. 
 # This displays predfeined working hours and break timings of the doctor. 
 
 def show_Appointment_timings(self):
   print("Appointment Timings : 10:00 hrs - 16:00 hrs")
   print("Break Timings : 13:00 hrs - 14:00 hrs") 
 
-# Function to show available appointment slots 
-# 1. This shows doctor's working hours  2. This also takes into account doctor's break time & predefined busy slots.
+# Function to show available appointment slots . This function uses: 
+# 1. Doctor's predefined working hours  2. Doctor's predfined Break time  & 3. Doctor's predefined busy slots 
 
-def show_available_slots(self):
+def show_available_slots(self,appointment_date):
 avaialable_slots =[] # Creating an empty list where appointments will be stored
+
+# Generating Appointment Slots as per Doctor's predfined working hours. 
+ for hour in range(self.appointment_start_time,
+                   self.appointment_end_time):
+   
+# Creating an Appointment Slot - The Selected appointment date is combined with the current working hour. 
+appointment_slot = appointment_date.replace(hour=hour,minute=0)
+# Checking Whether the Hour is During Break Time 
+ if (hour >= self.break_start_time
+     and hour < self.break_end_time
+    ):
+        continue
+# Displaying Available Appointment Slots
+
+print("\nAvailable Appointment Slots:")
+
+for i in range(len(available_slots)):
+print(i + 1,".",
+      available_slots[i].strftime
+      ("%H:%M hrs")
+     )
+
+# Returning the Available Slots
+# appointment.py will use this list so that the patient can select one of the displayed slots.
+  return available_slots
+
+# Function to Book an appointment 
+
+def book_Appointment(self,selected_slot):
+  
+  # Checking Whether the Slot is Already Busy
+  if selected_slot in self.busy_slots:
+      print("This slot is already busy.")
+ else:
+         self.busy_slots.append(selected_slot)      # Adding the Selected Slot to Busy Slots - Once booked the slot becomes unavailable. 
+     print("Appointment Booked Successfully.")
 
 
 # DERIVED CLASS - GASTROENTEROLOGIST
@@ -50,14 +86,16 @@ class Gastroenterologist(DoctorDetails):
   provided_treatments = ["Acidity","Acid Reflux","Gastric Issues","Bloating"]
 # Treatments Handled by Gastroenterologist and the above issues are mapped to gastroenterology speciality. 
 
-def __init__(self):             # Constructor for Gastroenterologist
+def __init__(self,doctor_name):                          # Constructor for Gastroenterologist
    super().__init__(doctor_name,"Gastroenterology")      # Calling Constructor of Parent DoctorDetails Class
  # doctor_name comes from object creation.
  # Gastroenterology is predefined because this derived class is represented as a speciality.
 
-# Defining Appointment Timings for the derived Gatroenterologist class.  
+# Defining Doctor's Working Hours 
   self.appointment_start_time = 10  
   self.appointment_end_time = 16 
+
+# Defining Doctor's Break Time 
   self.break_start_time = 13 
   self.break_end_time = 14 
 
@@ -65,7 +103,7 @@ def __init__(self):             # Constructor for Gastroenterologist
 #  datetime format : datetime(year, month, day, hour, minute)
 
  self.busy_slots = [datetime(2026, 8, 10, 11, 0),
-                    datetime(2026, 8, 10, 14, 30), 
+                    datetime(2026, 8, 10, 14, 0), 
                     datetime(2026, 8, 11, 15, 0)]
 
 # DERIVED CLASS  - PATHOLOGIST
