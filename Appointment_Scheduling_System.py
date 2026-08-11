@@ -115,7 +115,7 @@ with open("appointments.dat","rb") as file:     # "rb" means read binary
  print("Appointment Date:",saved_appointment[ "Appointment Date"])
  print("Appointment Time:",saved_appointment["Appointment Time"])
 
-except EOFError:                       # End of File Error 
+except Error:                       
              break
 
 
