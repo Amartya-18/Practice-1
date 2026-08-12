@@ -12,6 +12,7 @@ class DoctorDetails:     # Defining DoctorDetails Base Class
     DoctorDetails.doctor_id += 1              # Increasing ID for the next Doctor object
     self.doctor_name = doctor_name            # Storing Doctor Name & Speciality
     self.treatment_speciality = treatment_speciality
+    self.busy_slots = []                      # Basic list to store booked appointment times
 
   # FUNCTION TO DISPLAY DOCTOR DETAILS
   def display_Doctor_details(self):
@@ -114,7 +115,5 @@ class Pathologist(DoctorDetails):
     self.break_start_time = 13
     self.break_end_time = 14
 
-    # Predefined Busy Appointment Slots
-    self.busy_slots = [datetime(2026, 8, 10, 10, 0), datetime(2026, 8, 10, 15, 0),
-              datetime(2026, 8, 11, 12, 0)
-              ]
+    # Basic list to store booked appointment times
+    self.busy_slots = []
