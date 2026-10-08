@@ -1,0 +1,51 @@
+provider_id,name,speciality
+PR001,Dr_1,Cardiology
+PR002,Dr_2,Cardiology
+PR003,Dr_3,Pediatrics
+PR004,Dr_4,Radiology
+PR005,Dr_5,Oncology
+PR006,Dr_6,Cardiology
+PR007,Dr_7,Internal Medicine
+PR008,Dr_8,Pediatrics
+PR009,Dr_9,Dermatology
+PR010,Dr_10,Neurology
+PR011,Dr_11,Pediatrics
+PR012,Dr_12,Internal Medicine
+PR013,Dr_13,Pediatrics
+PR014,Dr_14,Radiology
+PR015,Dr_15,Neurology
+PR016,Dr_16,Internal Medicine
+PR017,Dr_17,Orthopedics
+PR018,Dr_18,Radiology
+PR019,Dr_19,Cardiology
+PR020,Dr_20,Dermatology
+PR021,Dr_21,Internal Medicine
+PR022,Dr_22,Orthopedics
+PR023,Dr_23,Cardiology
+PR024,Dr_24,Oncology
+PR025,Dr_25,Pediatrics
+PR026,Dr_26,Dermatology
+PR027,Dr_27,Oncology
+PR028,Dr_28,Dermatology
+PR029,Dr_29,Internal Medicine
+PR030,Dr_30,Pediatrics
+PR031,Dr_31,Orthopedics
+PR032,Dr_32,Neurology
+PR033,Dr_33,Internal Medicine
+PR034,Dr_34,Dermatology
+PR035,Dr_35,Radiology
+PR036,Dr_36,Pediatrics
+PR037,Dr_37,Neurology
+PR038,Dr_38,Cardiology
+PR039,Dr_39,Neurology
+PR040,Dr_40,Oncology
+PR041,Dr_41,Oncology
+PR042,Dr_42,Oncology
+PR043,Dr_43,Pediatrics
+PR044,Dr_44,Orthopedics
+PR045,Dr_45,Dermatology
+PR046,Dr_46,Orthopedics
+PR047,Dr_47,Dermatology
+PR048,Dr_48,Dermatology
+PR049,Dr_49,Dermatology
+PR050,Dr_50,Neurology
